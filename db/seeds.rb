@@ -15,6 +15,7 @@ CSV.foreach('db/phrases.txt', col_sep: "\t") do |row|
     answer: row[3],
     meanings: row[4],
     explanation: row[5],
-    level: row[6].to_i
+    section: row[6].to_i,
+    level: row[7].to_i
   )
 end
