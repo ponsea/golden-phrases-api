@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170804040940) do
+ActiveRecord::Schema.define(version: 20170812110928) do
 
   create_table "phrases", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "number", null: false
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20170804040940) do
     t.string "meanings", limit: 64, null: false
     t.integer "level", limit: 1
     t.text "explanation"
+    t.integer "section", null: false
   end
 
 end
