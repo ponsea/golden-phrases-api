@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904113503) do
+ActiveRecord::Schema.define(version: 20170904115745) do
 
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20170904113503) do
     t.string "phrase_en", limit: 128, null: false
     t.string "answer", limit: 32, null: false
     t.string "meanings", limit: 64, null: false
-    t.integer "level", limit: 1
     t.text "explanation"
     t.bigint "section_id"
     t.index ["section_id"], name: "index_phrases_on_section_id"
