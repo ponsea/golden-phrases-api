@@ -7,6 +7,17 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
+levels = [
+  { id: 1, title: "600点レベル 助走の400語" },
+  { id: 2, title: "730点レベル 加速の300語" },
+  { id: 3, title: "860点レベル 飛躍の200語" },
+  { id: 4, title: "990点レベル 頂点の100語" }
+]
+
+levels.each do |level|
+  Level.create(level)
+end
+
 CSV.foreach('db/phrases.txt', col_sep: "\t") do |row|
   Phrase.create(
     number: row[0].to_i,
