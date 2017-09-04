@@ -18,6 +18,19 @@ levels.each do |level|
   Level.create(level)
 end
 
+sectionRanges = [
+  [1, 2, 3, 4, 5, 6, 7, 8],
+  [9, 10, 11, 12, 13, 14],
+  [15, 16, 17, 18],
+  [19, 20]
+]
+
+4.times do |i|
+  sectionRanges[i].each do |j|
+    Section.create({id: j, level_id: i + 1})
+  end
+end
+
 CSV.foreach('db/phrases.txt', col_sep: "\t") do |row|
   Phrase.create(
     number: row[0].to_i,

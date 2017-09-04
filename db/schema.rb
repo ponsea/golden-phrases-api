@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904105135) do
+ActiveRecord::Schema.define(version: 20170904110748) do
 
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -25,6 +25,11 @@ ActiveRecord::Schema.define(version: 20170904105135) do
     t.integer "level", limit: 1
     t.text "explanation"
     t.integer "section", null: false
+  end
+
+  create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "level_id", null: false
+    t.index ["level_id"], name: "index_sections_on_level_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -49,4 +54,5 @@ ActiveRecord::Schema.define(version: 20170904105135) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "sections", "levels"
 end
