@@ -42,3 +42,16 @@ CSV.foreach('db/phrases.txt', col_sep: "\t") do |row|
     section_id: row[6].to_i,
   )
 end
+
+user = User.create({name: 'foo', password: '12345678', email: 'foo@example.com'})
+
+now = DateTime.now
+(1..5).each do |section|
+  [0.5, 0.7, 0.9].each do |rate| # correct rate of score_detail
+    now = now.tomorrow
+    score = Score.create(user_id: user.id, section_id: section, created_at: now)
+    Phrase.where(section_id: section).each do |phrase|
+      ScoreDetail.create(phrase_id: phrase.id, score_id: score.id, correct: rand() < rate)
+    end
+  end
+end
