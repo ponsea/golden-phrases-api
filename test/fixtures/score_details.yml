@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  score: one
+  phrase: one
+  correct: false
+
+two:
+  score: two
+  phrase: two
+  correct: false
