@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  section: one
+  created_at: 2017-09-08 01:14:15
+
+two:
+  user: two
+  section: two
+  created_at: 2017-09-08 01:14:15

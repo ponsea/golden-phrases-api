@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904115745) do
+ActiveRecord::Schema.define(version: 20170908001415) do
 
   create_table "levels", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "title"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20170904115745) do
     t.text "explanation"
     t.bigint "section_id"
     t.index ["section_id"], name: "index_phrases_on_section_id"
+  end
+
+  create_table "scores", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "user_id", null: false
+    t.bigint "section_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["section_id"], name: "index_scores_on_section_id"
+    t.index ["user_id"], name: "index_scores_on_user_id"
   end
 
   create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
@@ -55,5 +63,7 @@ ActiveRecord::Schema.define(version: 20170904115745) do
   end
 
   add_foreign_key "phrases", "sections"
+  add_foreign_key "scores", "sections"
+  add_foreign_key "scores", "users"
   add_foreign_key "sections", "levels"
 end
