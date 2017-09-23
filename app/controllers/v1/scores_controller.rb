@@ -7,7 +7,11 @@ class V1::ScoresController < ApplicationController
         .where(user: current_v1_user)
         .where(section_id: section)
         .order(created_at: :desc)
-      render json: scores, include: {}, root: :data
+      if params[:recent]
+        render json: scores.first
+      else
+        render json: scores, include: {}, root: :data
+      end
     elsif params[:max]
       scores = max_scores(current_v1_user.id)
       body = {data: scores}.to_camelback_keys
