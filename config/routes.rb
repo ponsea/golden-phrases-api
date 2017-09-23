@@ -6,6 +6,6 @@ Rails.application.routes.draw do
                                 controllers: { registrations: 'v1/auth/registrations' }
     resources :phrases, only: :index
     resources :levels, only: :index
-    resources :scores, only: :index
+    resources :scores, only: [:index, :create]
   end
 end

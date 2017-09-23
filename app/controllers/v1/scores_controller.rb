@@ -22,6 +22,20 @@ class V1::ScoresController < ApplicationController
     end
   end
 
+  def create
+    score = Score.new(section_id: params[:section_id], user: current_v1_user)
+    details = params[:details]
+    details.each do |detail|
+      score.score_details << ScoreDetail.new(phrase_id: detail[0], correct: detail[1])
+    end
+
+    if score.save
+      render json: score, status: :created
+    else
+      render json: score.errors, status: :unprocessable_entity
+    end
+  end
+
   private
   def max_scores(user_id)
     con = ActiveRecord::Base.connection
