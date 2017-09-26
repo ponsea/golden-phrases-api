@@ -7,3 +7,7 @@ ja:
         password: パスワード
         name: お名前
         email: Emailアドレス
+  devise:
+    mailer:
+      confirmation_instructions:
+        subject: "Emailアドレスの確認"
