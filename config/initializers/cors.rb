@@ -8,7 +8,11 @@
 # TODO: Should be changed before deployment
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins '*'
+    if Rails.env.production?
+      origins ENV.fetch('ALLOW_ORIGIN')
+    else
+      origins '*'
+    end
 
     resource '*',
       headers: :any,
